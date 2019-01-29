@@ -1,0 +1,51 @@
+﻿<Window x:Class="Assignment4_Video.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="119*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible"
+       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ScrollViewer Height="400" VerticalScrollBarVisibility="Auto">
+            <ListBox x:Name="disp" ItemsSource="{Binding imagelist}" >
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="5"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel x:Name="video" Orientation="Horizontal">
+                 <Button x:Name="imageselection" Click="imageselected_click">
+                <Image x:Name="final1" Source="{Binding image}" Width="80" Height="80" Stretch="Fill"/>
+                </Button>
+                            </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </Grid>
+        <Grid Grid.Column="1">
+            <Button Name="video" Content="VideoShots" HorizontalAlignment="Left" Margin="0,48,0,0" VerticalAlignment="Top" Width="152" Height="76" Click="videoFrames_click"/> 
+        </Grid>
+        
+        <Grid Grid.Column="2">
+    <MediaElement Name="mePlayer" Grid.RowSpan="1"  ScrubbingEnabled="False" LoadedBehavior="Manual" Source="20020924_juve_dk_02a_1.avi" Stretch="None"/>
+            
+        </Grid>
+        <WrapPanel HorizontalAlignment="Center">
+            <Label Name="lblStart" />
+            <Label Name="lblEnd" />
+             <Button Name="btnStop" Click="btnStop_Click">Stop</Button>
+           
+        </WrapPanel>
+    </Grid>
+   
+</Window>
